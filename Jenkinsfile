@@ -5,7 +5,7 @@ pipeline {
     parameters{
         choice(
             name:'ACTION'
-            choice: 'validate\ninit\nplan\napplt\ndestroy'
+            choices: 'validate\ninit\nplan\napply\ndestroy'
         )
     }
     stages{
