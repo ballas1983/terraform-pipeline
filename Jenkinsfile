@@ -20,7 +20,7 @@ pipeline {
     stage ('init') {
         steps{
         echo "intialize the terraform providers"
-        //terraform init
+        sh "terraform init"
     }
     }
     //terraform plan
@@ -32,7 +32,7 @@ pipeline {
         }
         steps{
         echo"Planning the terraform resources"
-        //terraform plan
+        sh "terraform plan"
     }
     }
     //terraform apply
@@ -44,7 +44,7 @@ pipeline {
         }
         steps{
         echo"Applying the terraform resources"
-        //terraform apply
+        sh "terraform apply"
     }
     }
     //terraform destroy
@@ -56,7 +56,7 @@ pipeline {
         }
         steps{
         echo "Destroying the terrform resouces"
-        //terraform destroy
+        sh "terraform destroy"
         }
     }
 }
