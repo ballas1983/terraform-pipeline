@@ -2,6 +2,12 @@ pipeline {
     agent{
         label 'terraform-slave'
     }
+    parameters{
+        choice(
+            name:'ACTION'
+            choice: 'validate\ninit\nplan\napplt\ndestroy'
+        )
+    }
     stages{
         //initialize the terraform
     stage ('init') {
