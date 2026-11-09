@@ -23,19 +23,37 @@ pipeline {
         //terraform init
     }
     }
+    //terraform plan
     stage ('plan'){
+        when {
+            expression {
+                params.ACTION =='plan'
+            }
+        }
         steps{
         echo"Planning the terraform resources"
         //terraform plan
     }
     }
+    //terraform apply
     stage ('apply'){
+        when {
+            expression {
+                params.ACTION =='apply'
+            }
+        }
         steps{
         echo"Applying the terraform resources"
         //terraform apply
     }
     }
+    //terraform destroy
     stage ('destroy'){
+        when {
+            expression {
+                params.ACTION =='destroy'
+            }
+        }
         steps{
         echo "Destroying the terrform resouces"
         //terraform destroy
