@@ -44,7 +44,7 @@ pipeline {
         }
         steps{
         echo"Applying the terraform resources"
-        sh "terraform apply"
+        sh "terraform apply --auto-approve"
     }
     }
     //terraform destroy
