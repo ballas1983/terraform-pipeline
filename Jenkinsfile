@@ -1,7 +1,7 @@
 pipeline {
-    agent(
+    agent{
         label 'terraform-slave'
-    )
+    }
     stage ('init') {
         step{
         echo "intialize the terraform providers"
