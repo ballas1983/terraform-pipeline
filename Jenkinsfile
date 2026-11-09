@@ -79,7 +79,7 @@ pipeline {
 
    
     }
-}
+
  post {
     always {
          echo "*****************do clean the workspace *****************"
