@@ -9,13 +9,27 @@ pipeline {
             description: 'Terraform action'
         )
     }
+    
     // parameters{
     //     choice(
     //         name:'ACTION'
     //         choices: 'validate\ninit\nplan\napply\ndestroy'
     //     )
     // }
+    environment {
+        GOOGLE_APPLICATION_CREDENTIALS = "${WORKSPACE}/sa-key.json"
+    }
     stages{
+        stage ('Setup GCE Auth') {
+            steps{
+                withCredentials([file(credentialsId: 'GCP-SA-Key', variable: 'SA_KEY')]) {
+                 // some block
+                 sh '''
+                     cp $SA_KEY $GOOGLE_APPLICATION_CREDENTIALS
+                 ,,,
+                }
+            }
+        }
         //initialize the terraform
     stage ('init') {
         steps{
@@ -56,8 +70,9 @@ pipeline {
         }
         steps{
         echo "Destroying the terrform resouces"
-        sh "terraform destroy"
+        sh "terraform destroy --auto-approve "
         }
     }
 }
 }
+
