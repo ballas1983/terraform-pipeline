@@ -76,12 +76,18 @@ pipeline {
         sh "terraform destroy --auto-approve "
         }
     }
-post {
+    post {
     always {
-        echo "*****************do clean the workspace *****************"
+         echo "*****************do clean the workspace *****************"
         cleanWs()
     }
 }
+// post {
+//     always {
+//         echo "*****************do clean the workspace *****************"
+//         cleanWs()
+//     }
+// }
 }
 
 }
