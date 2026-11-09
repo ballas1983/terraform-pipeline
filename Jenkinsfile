@@ -86,13 +86,7 @@ pipeline {
         cleanWs()
     }
  }
-// post {
-//     always {
-//         echo "*****************do clean the workspace *****************"
-//         cleanWs()
-//     }
-// }
-}
 
-}
+
+
 
