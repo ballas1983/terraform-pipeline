@@ -26,17 +26,20 @@ pipeline {
                  // some block
                  sh '''
                      cp $SA_KEY $GOOGLE_APPLICATION_CREDENTIALS
-                 ,,,
+                 '''
                 }
             }
         }
-        //initialize the terraform
+        
+
+       // initialize the terraform
     stage ('init') {
         steps{
         echo "intialize the terraform providers"
         sh "terraform init"
     }
     }
+
     //terraform plan
     stage ('plan'){
         when {
