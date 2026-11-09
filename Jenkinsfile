@@ -3,25 +3,25 @@ pipeline {
         label 'terraform-slave'
     }
     stage ('init') {
-        step{
+        steps{
         echo "intialize the terraform providers"
         //terraform init
     }
     }
     stage('plan'){
-        step{
+        steps{
         echo"Planning the terraform resources"
         //terraform plan
     }
     }
     stage('apply'){
-        step{
+        steps{
         echo"Applying the terraform resources"
         //terraform apply
     }
     }
     stage('destroy'){
-        step{
+        steps{
         echo "Destroying the terrform resouces"
         //terraform destroy
         }
