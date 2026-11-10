@@ -133,7 +133,10 @@ pipeline {
     //     )
     // }
     environment {
+        GCS_BUCKET = "seraphic-shell-511217-r6-kn-bucket"
+        
         GOOGLE_APPLICATION_CREDENTIALS = "${WORKSPACE}/sa-key.json"
+        TFVARS_FILES = "${params.ENVIRONMENT}.tfvars"
     }
     stages{
         stage ('Setup GCE Auth') {
@@ -152,7 +155,8 @@ pipeline {
     stage ('init') {
         steps{
         echo "intialize the terraform providers"
-        sh "terraform init"
+        //sh "terraform init"
+        sh "terraform init --backend-config="bucket=${env.GCS_BUCKET}" --backend-config="prefix=${params.ENVIRONMENT}" "
     }
     }
 
@@ -165,7 +169,7 @@ pipeline {
         }
         steps{
         echo"Planning the terraform resources"
-        sh "terraform plan"
+        sh "terraform plan -var-file=${env.TFVARS_FILES}"
     }
     }
     //terraform apply
@@ -177,7 +181,7 @@ pipeline {
         }
         steps{
         echo"Applying the terraform resources"
-        sh "terraform apply --auto-approve"
+        sh "terraform apply  -var-file=${env.TFVARS_FILES} --auto-approve"
     }
     }
     //terraform destroy
@@ -189,7 +193,7 @@ pipeline {
         }
         steps{
         echo "Destroying the terrform resouces"
-        sh "terraform destroy --auto-approve "
+        sh "terraform destroy  -var-file=${env.TFVARS_FILES} --auto-approve"
         }
     }
 
