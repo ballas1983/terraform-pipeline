@@ -183,6 +183,9 @@ pipeline {
             }
         }
         steps{
+        timeout (time: 300, unit: 'SECONDS'){
+        input message: "Do you want to Apply the changes ?", ok: "yes", submitter: "navya,kn"
+        }
         echo"Applying the terraform resources"
         sh "terraform apply  -var-file=${env.TFVARS_FILES} --auto-approve"
     }
