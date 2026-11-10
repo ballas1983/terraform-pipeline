@@ -1,0 +1,6 @@
+local_vpc_name      = "kn-test-vpc-app1"
+local_subnet_name   = "kn-test-subnet"
+local_subnet_cidr   = "10.9.0.0/16"
+local_instance_name = "kn-webserver-app1"
+local_instance_type = "e2-medium"
+local_instance_zone = "us-central1-b"

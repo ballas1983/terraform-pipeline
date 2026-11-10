@@ -1,8 +1,2 @@
 project_id          = "seraphic-shell-511217-r6"
 region              = "us-central1"
-local_vpc_name      = "kn-vpc-app1"
-local_subnet_name   = "kn-subnet"
-local_subnet_cidr   = "10.7.0.0/16"
-local_instance_name = "kn-webserver-app1"
-local_instance_type = "e2-medium"
-local_instance_zone = "us-central1-b"

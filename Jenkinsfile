@@ -113,6 +113,12 @@ pipeline {
         label 'terraform-slave'
     }
     parameters {
+         choice(
+            name: 'ACTION',
+            choices: ['dev', 'test', 'prod', 'stage'],
+            description: 'Choose any one Environment to deploy:'
+        ) 
+        
         choice(
             name: 'ACTION',
             choices: ['validate', 'init', 'plan', 'apply', 'destroy'],
